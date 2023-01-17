@@ -33,13 +33,8 @@ root.render(
           <Header />
           <OnePost />
         </Route>
-        <Route path="/upload">
-          <Header />
-          <Upload />
-        </Route>
+        <PrivateRoute path="/upload" component={Upload} />
         <PrivateRoute path="/account" component={Account} />
-        {/* <Header />
-          <Account /> */}
         <Route path="*">
           <Error />
         </Route>

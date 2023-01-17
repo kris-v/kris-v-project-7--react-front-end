@@ -7,15 +7,17 @@ let authenticatedStatus = false
 export function Login(props) {
   let location = useLocation()
   let history = useHistory()
-  // const { from } = state || { from: { pathname: '/' } }
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
-  // const [userId, setUserId] = useState('')
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+  // const [userId, setUserId] = useState('')
+  // const { from } = state || { from: { pathname: '/' } }
 
   let userToken = ''
   let userId = ''
+  let userName = ''
   let responseMessage = ''
 
   const handleSubmit = (e) => {
@@ -35,9 +37,18 @@ export function Login(props) {
     })
       .then((res) => res.json())
       .then((res) => {
+        if (res.message === 'User not found') {
+          setError(true)
+          setErrorMessage(res.message)
+        }
+        if (res.message === 'Incorrect password') {
+          setError(true)
+          setErrorMessage(res.message)
+        }
         console.log(res)
         console.log(res.user_id)
         userId = res.user_id
+        userName = res.username
         userToken = res.token
         authenticatedStatus = true
         console.log({ authStatus: authenticatedStatus })
@@ -50,6 +61,7 @@ export function Login(props) {
       })
       .then(() => {
         localStorage.setItem('userId', `${userId}`)
+        localStorage.setItem('userName', `${userName}`)
         localStorage.setItem('userToken', `${userToken}`)
       })
       .then(() => {
@@ -57,7 +69,7 @@ export function Login(props) {
           // setIsAuthenticated(true)
           console.log(authenticatedStatus)
           console.log(responseMessage)
-          history.push('account')
+          history.push('/')
           // console.log(state)
           // return <Redirect to={state.from.pathname} />
         }
@@ -79,6 +91,7 @@ export function Login(props) {
 
   return (
     <div className="auth-form-container">
+      <h4>{error ? errorMessage : ''}</h4>
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">email</label>

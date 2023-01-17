@@ -1,5 +1,6 @@
 import React from 'react'
 import { Redirect, Route, useLocation } from 'react-router-dom'
+import Header from './Components/Header'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const location = useLocation()
@@ -8,7 +9,10 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   return (
     <Route {...rest}>
       {jwt && jwt !== undefined ? (
-        <Component />
+        <div>
+          <Header />
+          <Component />
+        </div>
       ) : (
         <Redirect to={{ pathname: '/login', state: { from: location } }} />
       )}
