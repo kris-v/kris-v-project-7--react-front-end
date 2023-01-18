@@ -12,11 +12,13 @@ import { Login } from './Components/Registration/Login'
 import { Register } from './Components/Registration/Register'
 import Auth from './Components/Registration/Auth'
 import PrivateRoute from './PrivateRoute'
+import GlobalStyle from './Styles/GlobalStyle'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
     <Router>
+      <GlobalStyle />
       <Switch>
         <Route exact path="/">
           <Header />

@@ -63,13 +63,6 @@ function OnePost(props) {
     fetchPosts()
   }, [])
 
-  // useEffect(() => {
-  //   fetch(`http://localhost:3000/api/posts/${post_id}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setSinglePostData(data))
-  //     .then(console.log(singlePostData))
-  // }, [])
-
   if (!singlePostData[0]) {
     return (
       <div>
@@ -82,6 +75,9 @@ function OnePost(props) {
   } else {
     return (
       <div>
+        <Link to={'/posts'}>
+          <button>Back</button>
+        </Link>
         <h1>This is a single GIF 🌆</h1>
         <h2>The post ID is {post_id}</h2>
         <p>{singlePostData[0].title}</p>

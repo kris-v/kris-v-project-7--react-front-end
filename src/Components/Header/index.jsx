@@ -1,20 +1,35 @@
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import { StyledLink } from '../../Styles/Atoms'
+import RedLogo from '../../assets/icon.svg'
+import '../../Styles/Header.css'
+
+const HomeLogo = styled.img`
+  height: 80px;
+`
+
+const NavContainer = styled.nav`
+  padding: 10px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: sticky;
+  top: 0%;
+  background-color: white;
+`
 
 function Header() {
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/posts">View All Posts</Link>
-        </li>
-        <li>
-          <Link to="/account">Account</Link>
-        </li>
-      </ul>
-    </nav>
+    <NavContainer>
+      <Link to="/">
+        <HomeLogo src={RedLogo} />
+      </Link>
+      <StyledLink to="/">Home</StyledLink>
+
+      <StyledLink to="/posts">Posts</StyledLink>
+
+      <StyledLink to="/account">Account</StyledLink>
+    </NavContainer>
   )
 }
 

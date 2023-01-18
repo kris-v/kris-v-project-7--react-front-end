@@ -63,6 +63,7 @@ function PostsListView() {
               title={post.title}
               userName={post.username}
               postId={post.post_id}
+              createdDate={post.created_at.substring(0, 10)}
               onClick={() => console.log(post.post_id)}
             />
           </Link>
