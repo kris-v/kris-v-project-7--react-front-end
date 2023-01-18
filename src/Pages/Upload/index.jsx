@@ -44,14 +44,12 @@ function Upload() {
       <h2>Upload GIF</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="postContent">Share something cool</label>
-        <input
-          type="text"
-          name="postContent"
-          id="postContent"
+        <textarea
+          value={postContent}
           onChange={(e) => {
             setPostContent(e.target.value)
           }}
-        ></input>
+        ></textarea>
         <label htmlFor="postAuthor">Posted by</label>
         <button
           type="submit"

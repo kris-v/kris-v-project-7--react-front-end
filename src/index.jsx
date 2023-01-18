@@ -25,6 +25,7 @@ root.render(
           <Home />
         </Route>
         <Route exact path="/login">
+          <Header />
           <Auth />
         </Route>
         <Route exact path="/posts">

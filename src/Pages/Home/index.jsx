@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { StyledLink } from '../../Styles/Atoms'
 import '../../Styles/Home.css'
+import HomeIllustration from '../../assets/icon-left-font-monochrome-black.png'
 
 const HomeWrapper = styled.div`
   background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
@@ -11,7 +12,7 @@ const HomeWrapper = styled.div`
   min-height: 100vh;
   align-items: center;
   color: white;
-  font-size: 3rem;
+  font-size: 2rem;
 `
 
 const StyledTitle = styled.h2`
@@ -33,7 +34,8 @@ function Home() {
   if (jwt) {
     return (
       <HomeWrapper>
-        <StyledTitle>Hello {userName}</StyledTitle>
+        <img src={HomeIllustration} alt="Company logo" />
+        <StyledTitle>Hello {userName}.</StyledTitle>
         <ButtonsWrapper>
           <StyledLink to="/posts">
             <button className="home-btn">View posts</button>
@@ -47,7 +49,13 @@ function Home() {
   }
   return (
     <HomeWrapper>
-      <StyledLink to="/login">Log In</StyledLink>
+      <img className="logoImg" src={HomeIllustration} alt="Company logo" />
+      <StyledTitle>
+        Welcome to Groupomania, where the most exciting experiences are shared.
+      </StyledTitle>
+      <StyledLink to="/login">
+        <button>Log In</button>
+      </StyledLink>
     </HomeWrapper>
   )
 }

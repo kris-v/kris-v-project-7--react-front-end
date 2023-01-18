@@ -38,6 +38,7 @@ function OnePost(props) {
         )
         const data = await response.json()
         setSinglePostData(data)
+        console.log(singlePostData)
         usersRead = data[0].users_read
         // setUsersRead(data[0].usersRead)
         if (!usersRead.includes(userId)) {
@@ -66,9 +67,7 @@ function OnePost(props) {
   if (!singlePostData[0]) {
     return (
       <div>
-        <h2>
-          Oops... It looks like you are not authorized to view this content.
-        </h2>
+        <h2>It looks like you are not authorized to view this content.</h2>
         <Link to="/login">Click here to Log In</Link>
       </div>
     )
@@ -82,9 +81,11 @@ function OnePost(props) {
         <h2>The post ID is {post_id}</h2>
         <p>{singlePostData[0].title}</p>
         {/* <img src={singlePostData[0].image_url} alt="GIF" /> */}
-        <Link to={'/posts'}>
-          <button onClick={() => deleteGif()}>Delete Post</button>
-        </Link>
+        {userId === singlePostData[0].user_id && (
+          <Link to={'/posts'}>
+            <button onClick={() => deleteGif()}>Delete Post</button>
+          </Link>
+        )}
       </div>
     )
   }

@@ -1,3 +1,22 @@
 .home-btn {
   font-size: 1.1rem;
 }
+
+button {
+  border: none;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #7439db;
+  font-size: 1.2rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: whitesmoke;
+}
+
+.logoImg {
+  height: 30vh;
+}
