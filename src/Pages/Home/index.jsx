@@ -15,9 +15,18 @@ const HomeWrapper = styled.div`
   font-size: 2rem;
 `
 
+const StyledImage = styled.img`
+  height: 160px;
+`
+
 const StyledTitle = styled.h2`
   margin-bottom: 5rem;
   margin-top: 3rem;
+  margin: 3rem;
+  font-size: 2.5rem;
+  @media screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
 `
 
 const ButtonsWrapper = styled.div`
@@ -34,8 +43,8 @@ function Home() {
   if (jwt) {
     return (
       <HomeWrapper>
-        <img src={HomeIllustration} alt="Company logo" />
-        <StyledTitle>Hello {userName}.</StyledTitle>
+        <StyledImage src={HomeIllustration} alt="Company logo" />
+        <StyledTitle className="home-title">Hello {userName}.</StyledTitle>
         <ButtonsWrapper>
           <StyledLink to="/posts">
             <button className="home-btn">View posts</button>

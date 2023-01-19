@@ -1,7 +1,63 @@
-import logo from '../../assets/icon.png'
 import { useParams, useRouteMatch } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { StyledLink } from '../../Styles/Atoms'
+import styled from 'styled-components'
+import colors from '../../Styles/colors'
+
+const MainWrapper = styled.div`
+  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
+  min-height: 100vh;
+  padding-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+`
+
+const CardWrapper = styled.div`
+  display: flex;
+  background-color: blue;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1.4rem;
+  margin: 1.2rem;
+  background-color: ${colors.backgroundLight};
+  border-radius: 30px;
+  width: 80%;
+  max-width: 700px;
+`
+
+const UnauthorizedMessage = styled.div`
+  font-style: normal;
+  margin-bottom: 3rem;
+`
+
+const MessageWrapper = styled.div`
+  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+  align-items: center;
+  justify-content: flex-start;
+`
+
+const StyledTitle = styled.h2`
+  margin-bottom: 5rem;
+  margin-top: 3rem;
+  margin: 3rem;
+  font-size: 2rem;
+  text-align: center;
+  @media screen and (max-width: 600px) {
+    font-size: 1.5rem;
+  }
+`
 
 function OnePost(props) {
   const [singlePostData, setSinglePostData] = useState([])
@@ -66,27 +122,38 @@ function OnePost(props) {
 
   if (!singlePostData[0]) {
     return (
-      <div>
-        <h2>It looks like you are not authorized to view this content.</h2>
-        <Link to="/login">Click here to Log In</Link>
-      </div>
+      <MessageWrapper>
+        <UnauthorizedMessage>
+          <StyledTitle>
+            The content you are trying to access is restricted to registered
+            users. Please log in to view posts.
+          </StyledTitle>
+        </UnauthorizedMessage>
+        <StyledLink to="/login">
+          <button>Click here to Log In</button>
+        </StyledLink>
+      </MessageWrapper>
     )
   } else {
     return (
-      <div>
-        <Link to={'/posts'}>
-          <button>Back</button>
-        </Link>
-        <h1>This is a single GIF 🌆</h1>
-        <h2>The post ID is {post_id}</h2>
-        <p>{singlePostData[0].title}</p>
+      <MainWrapper>
+        {/* <h2>The post ID is {post_id}</h2> */}
+        <h3>From {singlePostData[0].username}</h3>
+        <CardWrapper>
+          <p>{singlePostData[0].title}</p>
+        </CardWrapper>
+        <ButtonsWrapper>
+          <StyledLink to={'/posts'}>
+            <button>Back</button>
+          </StyledLink>
+          {userId === singlePostData[0].user_id && (
+            <StyledLink to={'/posts'}>
+              <button onClick={() => deleteGif()}>Delete Post</button>
+            </StyledLink>
+          )}
+        </ButtonsWrapper>
         {/* <img src={singlePostData[0].image_url} alt="GIF" /> */}
-        {userId === singlePostData[0].user_id && (
-          <Link to={'/posts'}>
-            <button onClick={() => deleteGif()}>Delete Post</button>
-          </Link>
-        )}
-      </div>
+      </MainWrapper>
     )
   }
 }

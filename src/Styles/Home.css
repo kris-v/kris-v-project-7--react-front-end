@@ -2,6 +2,12 @@
   font-size: 1.1rem;
 }
 
+@media screen and (max-width: 300px) {
+  .home-title {
+    font-size: 3px;
+  }
+}
+
 button {
   border: none;
   background-color: white;
@@ -10,11 +16,12 @@ button {
   cursor: pointer;
   color: #7439db;
   font-size: 1.2rem;
+  transition: 300ms;
 }
 
 button:hover {
   cursor: pointer;
-  background-color: whitesmoke;
+  /* background-color: whitesmoke; */
 }
 
 .logoImg {
