@@ -12,6 +12,10 @@ const CardLabel = styled.span`
   text-overflow: ellipsis;
 `
 
+const UsernameWrapper = styled.span`
+  font-weight: bolder;
+`
+
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -47,7 +51,7 @@ function Card({ title, userName, createdDate, seen }) {
       {seen && <CardNotification>{seen}</CardNotification>}
       <CardLabel>{title}</CardLabel>
       <PostInfo>
-        Posted by {userName} on {createdDate}
+        Posted by <UsernameWrapper>{userName}</UsernameWrapper> on {createdDate}
       </PostInfo>
     </CardWrapper>
   )

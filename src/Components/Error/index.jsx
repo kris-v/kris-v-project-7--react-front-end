@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 const ErrorWrapper = styled.div`
+  background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;

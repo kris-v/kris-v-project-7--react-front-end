@@ -29,6 +29,15 @@
   }
 }
 
+@media screen and (max-width: 600px) {
+  .auth-form-container {
+    max-width: 300px;
+  }
+  button {
+    font-size: 1rem;
+  }
+}
+
 label {
   text-align: left;
   padding: 0.25rem 0;
@@ -47,15 +56,22 @@ button {
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: bolder;
   color: #7439db;
 }
 
 .link-btn {
   background: none;
   color: white;
+  font-weight: bold;
   text-decoration: underline;
 }
 
 .link-btn:hover {
   color: rgb(73, 69, 69);
+}
+
+.error-message {
+  margin-bottom: 3rem;
+  color: black;
 }

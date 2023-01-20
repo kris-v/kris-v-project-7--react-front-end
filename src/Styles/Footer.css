@@ -13,8 +13,21 @@ footer {
 ul {
   list-style-type: none;
   height: fit-content;
+  display: flex;
+  padding-bottom: 0.5rem;
 }
 
 li {
-  padding: 0.3rem;
+  padding: 0.7rem;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+  ul {
+    flex-direction: column;
+  }
 }

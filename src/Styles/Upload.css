@@ -1,0 +1,26 @@
+textarea {
+  padding: 3rem;
+  margin: 0 2rem;
+  border-radius: 12px;
+  width: 50%;
+  max-width: 700px;
+  align-self: center;
+  margin-bottom: 3rem;
+  border: none;
+}
+
+.upper-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-container {
+  max-width: 100px;
+  padding-right: 50px;
+}
+
+.form-btn {
+  width: fit-content;
+  align-self: center;
+}

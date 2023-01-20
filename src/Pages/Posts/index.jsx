@@ -5,7 +5,6 @@ import styled from 'styled-components'
 import { StyledLink, Loader } from '../../Styles/Atoms'
 import HomeIllustration from '../../assets/icon-left-font-monochrome-black.png'
 import '../../Styles/Posts.css'
-import colors from '../../Styles/colors'
 
 const MainContainer = styled.div`
   background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
@@ -24,7 +23,6 @@ const CardsContainer = styled.div`
   margin: 0 auto;
   margin-top: 2rem;
   padding-bottom: 3rem;
-  background-color: blue;
 `
 
 const StyledImage = styled.img`
@@ -70,6 +68,12 @@ function PostsListView() {
   const jwt = localStorage.getItem('userToken')
   const userId = parseInt(localStorage.getItem('userId'))
 
+  const convetDate = (date) => {
+    const postDate = new Date(date.substring(0, 10))
+    const postDateString = postDate.toDateString()
+    return postDateString
+  }
+
   const addIdToUsersReadArray = () => {
     console.log('testing usersRead callback')
   }
@@ -91,6 +95,7 @@ function PostsListView() {
       } catch (err) {
         console.log('==== error ====', err)
         setError(true)
+        console.log(error)
       } finally {
         setDataLoading(false)
       }
@@ -141,7 +146,7 @@ function PostsListView() {
                   seen={post.users_read.includes(userId) ? null : 'New'}
                   userName={post.username}
                   postId={post.post_id}
-                  createdDate={post.created_at.substring(0, 10)}
+                  createdDate={convetDate(post.created_at).substring(4, 15)}
                   onClick={() => console.log(post.post_id)}
                 />
               </StyledLink>

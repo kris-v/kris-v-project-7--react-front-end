@@ -46,7 +46,7 @@ export const Register = (props) => {
 
   return (
     <div className="auth-form-container">
-      <h4>{error ? errorMessage : ''}</h4>
+      <h4 className="error-message">{error ? errorMessage : ''}</h4>
       <h2>Register</h2>
       <form className="register-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Username</label>

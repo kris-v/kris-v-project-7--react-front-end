@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Home from './Pages/Home'
@@ -9,8 +9,7 @@ import Account from './Pages/Account'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import Error from './Components/Error'
-import { Login } from './Components/Registration/Login'
-import { Register } from './Components/Registration/Register'
+import ScrollToTop from './Components/ScrollToTop'
 import Auth from './Components/Registration/Auth'
 import PrivateRoute from './PrivateRoute'
 import GlobalStyle from './Styles/GlobalStyle'
@@ -22,6 +21,7 @@ root.render(
       <GlobalStyle />
       <Switch>
         <Route exact path="/">
+          <ScrollToTop />
           <Header />
           <Home />
           <Footer />
@@ -32,11 +32,13 @@ root.render(
           <Footer />
         </Route>
         <Route exact path="/posts">
+          <ScrollToTop />
           <Header />
           <PostsListView />
           <Footer />
         </Route>
         <Route path="/posts/:post_id">
+          <ScrollToTop />
           <Header />
           <OnePost />
           <Footer />

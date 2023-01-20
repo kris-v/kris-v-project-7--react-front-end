@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { StyledLink } from '../../Styles/Atoms'
 import styled from 'styled-components'
 import colors from '../../Styles/colors'
+import { Loader } from '../../Styles/Atoms'
 
 const MainWrapper = styled.div`
   background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);

@@ -91,7 +91,7 @@ export function Login(props) {
 
   return (
     <div className="auth-form-container">
-      <h4>{error ? errorMessage : ''}</h4>
+      <h4 className="error-message">{error ? errorMessage : ''}</h4>
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">email</label>
