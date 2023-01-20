@@ -1,10 +1,9 @@
-import { useParams, useRouteMatch } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { StyledLink } from '../../Styles/Atoms'
 import styled from 'styled-components'
 import colors from '../../Styles/colors'
-import { Loader } from '../../Styles/Atoms'
+import '../../Styles/OnePost.css'
 
 const MainWrapper = styled.div`
   background-image: linear-gradient(79deg, #7439db, #c66fbc 48%, #f7944d);
@@ -60,9 +59,8 @@ const StyledTitle = styled.h2`
   }
 `
 
-function OnePost(props) {
+function OnePost() {
   const [singlePostData, setSinglePostData] = useState([])
-  // const [usersRead, setUsersRead] = useState([])
   const { post_id } = useParams()
   const jwt = localStorage.getItem('userToken')
   const userId = parseInt(localStorage.getItem('userId'))
@@ -97,7 +95,6 @@ function OnePost(props) {
         setSinglePostData(data)
         console.log(singlePostData)
         usersRead = data[0].users_read
-        // setUsersRead(data[0].usersRead)
         if (!usersRead.includes(userId)) {
           usersRead.push(userId)
           console.log(usersRead)
@@ -138,10 +135,9 @@ function OnePost(props) {
   } else {
     return (
       <MainWrapper>
-        {/* <h2>The post ID is {post_id}</h2> */}
         <h3>From {singlePostData[0].username}</h3>
         <CardWrapper>
-          <p>{singlePostData[0].title}</p>
+          <p className="content-box">{singlePostData[0].title}</p>
         </CardWrapper>
         <ButtonsWrapper>
           <StyledLink to={'/posts'}>

@@ -12,3 +12,17 @@
   max-width: 100px;
   padding-right: 50px;
 }
+
+.message-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+h4.no-posts-message {
+  padding-top: 3rem;
+  font-size: 2rem;
+  color: white;
+}

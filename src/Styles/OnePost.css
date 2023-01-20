@@ -1,0 +1,9 @@
+.content-box {
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 600px) {
+  .content-box {
+    font-size: 1rem;
+  }
+}

@@ -134,6 +134,13 @@ function PostsListView() {
           </LoaderWrapper>
         ) : (
           <CardsContainer>
+            {postsData.length === 0 ? (
+              <div className="message-wrapper">
+                <h4 className="no-posts-message">
+                  There are currently no published posts
+                </h4>
+              </div>
+            ) : null}
             {postsData.map((post) => (
               <StyledLink
                 to={`/posts/${post.post_id}`}
@@ -143,7 +150,11 @@ function PostsListView() {
                 {/* {post.users_read.includes(userId) ? null : <span>New</span>} */}
                 <Card
                   title={post.title}
-                  seen={post.users_read.includes(userId) ? null : 'New'}
+                  seen={
+                    post.user_id === userId || post.users_read.includes(userId)
+                      ? null
+                      : 'New'
+                  }
                   userName={post.username}
                   postId={post.post_id}
                   createdDate={convetDate(post.created_at).substring(4, 15)}
