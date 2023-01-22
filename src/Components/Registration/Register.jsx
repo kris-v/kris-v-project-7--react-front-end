@@ -11,10 +11,14 @@ export const Register = (props) => {
   const handleSubmit = (e) => {
     createUser()
     e.preventDefault()
-    console.log(email, pass, name)
   }
 
   const createUser = () => {
+    if (email === '' || pass === '' || name === '') {
+      setError(true)
+      setErrorMessage('All fields are required')
+      return null
+    }
     fetch('http://localhost:3000/api/users/signup', {
       method: 'POST',
       headers: {
@@ -32,12 +36,12 @@ export const Register = (props) => {
           setEmail('')
           setPass('')
           setName('')
+          setError(false)
           props.onFormSwitch('login')
-          console.log(res)
+          return null
         } else {
           setError(true)
           setErrorMessage(res.message)
-          console.log(res)
           return null
         }
       })
@@ -74,9 +78,7 @@ export const Register = (props) => {
           id="password"
           name="password"
         ></input>
-        <button type="submit" disabled={email && pass && name ? false : true}>
-          Sign Up
-        </button>
+        <button type="submit">Sign Up</button>
       </form>
       <button className="link-btn" onClick={() => props.onFormSwitch('login')}>
         Already have an account? Log in here

@@ -22,6 +22,11 @@ export function Login(props) {
   }
 
   const fetchUserCredentials = () => {
+    if (email === '' || pass === '') {
+      setError(true)
+      setErrorMessage('All fields are required')
+      return null
+    }
     fetch('http://localhost:3000/api/users/login', {
       method: 'POST',
       headers: {
@@ -93,11 +98,7 @@ export function Login(props) {
           id="password"
           name="password"
         ></input>
-        <button
-          type="click"
-          onClick={() => fetchUserCredentials()}
-          disabled={email && pass ? false : true}
-        >
+        <button type="click" onClick={() => fetchUserCredentials()}>
           Log In
         </button>
       </form>
