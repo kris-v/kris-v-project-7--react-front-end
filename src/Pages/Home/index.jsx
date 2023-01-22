@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { StyledLink } from '../../Styles/Atoms'
 import '../../Styles/Home.css'
@@ -36,7 +36,6 @@ const ButtonsWrapper = styled.div`
 `
 
 function Home() {
-  const [isDataLoading, setDataLoading] = useState(false)
   const jwt = localStorage.getItem('userToken')
   const userName = localStorage.getItem('userName')
 

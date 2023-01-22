@@ -37,7 +37,6 @@ function Upload() {
   const userId = localStorage.getItem('userId')
   const userName = localStorage.getItem('userName')
   const [postContent, setPostContent] = useState('')
-  const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   let history = useHistory()
 
@@ -65,8 +64,8 @@ function Upload() {
           console.log(data.message)
           history.push('posts')
         } else {
-          setError(true)
           setErrorMessage(data.message)
+          console.log(errorMessage)
         }
       })
   }

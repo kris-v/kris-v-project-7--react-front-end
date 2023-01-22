@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
 import '../../Styles/Auth.css'
 
 export const Register = (props) => {
@@ -28,7 +27,6 @@ export const Register = (props) => {
       }),
     })
       .then((res) => res.json())
-      // .then((res) => console.log(res))
       .then((res) => {
         if (res.message !== 'Username or email already exists') {
           setEmail('')
@@ -40,6 +38,7 @@ export const Register = (props) => {
           setError(true)
           setErrorMessage(res.message)
           console.log(res)
+          return null
         }
       })
   }
@@ -55,14 +54,14 @@ export const Register = (props) => {
           onChange={(e) => setName(e.target.value)}
           name="name"
           id="name"
-          placeholder="Full name"
+          placeholder="Your name"
         ></input>
         <label htmlFor="email">email</label>
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
-          placeholder="youremail@gmail.com"
+          placeholder="youremail@example.com"
           id="email"
           name="email"
         ></input>
@@ -71,7 +70,7 @@ export const Register = (props) => {
           value={pass}
           onChange={(e) => setPass(e.target.value)}
           type="password"
-          placeholder="********"
+          placeholder="password"
           id="password"
           name="password"
         ></input>

@@ -101,7 +101,7 @@ function PostsListView() {
       }
     }
     fetchPosts()
-  }, [])
+  }, [error, jwt])
 
   if (postsData.length === undefined) {
     return (
@@ -147,7 +147,6 @@ function PostsListView() {
                 key={`${post.post_id}`}
                 onClick={() => addIdToUsersReadArray(userId)}
               >
-                {/* {post.users_read.includes(userId) ? null : <span>New</span>} */}
                 <Card
                   title={post.title}
                   seen={

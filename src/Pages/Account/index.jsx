@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
 import styled from 'styled-components'
@@ -31,7 +30,6 @@ const ButtonsWrapper = styled.div`
 function Account() {
   const userId = localStorage.getItem('userId')
   const history = useHistory()
-  // const { user_id } = useParams
 
   const deleteAccount = () => {
     fetch(`http://localhost:3000/api/users/${userId}`, {

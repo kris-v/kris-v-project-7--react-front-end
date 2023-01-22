@@ -29,5 +29,11 @@ li {
 @media screen and (max-width: 600px) {
   ul {
     flex-direction: column;
+    text-align: left;
+  }
+  footer {
+    align-items: flex-start;
+    margin-left: 0;
+    padding-left: 0;
   }
 }

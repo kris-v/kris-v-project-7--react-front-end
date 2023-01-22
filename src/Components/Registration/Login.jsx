@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react'
-import { Redirect, useHistory, useLocation } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 import '../../Styles/Auth.css'
 
 let authenticatedStatus = false
@@ -9,11 +9,8 @@ export function Login(props) {
   let history = useHistory()
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [error, setError] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  // const [userId, setUserId] = useState('')
-  // const { from } = state || { from: { pathname: '/' } }
 
   let userToken = ''
   let userId = ''
@@ -37,13 +34,15 @@ export function Login(props) {
     })
       .then((res) => res.json())
       .then((res) => {
-        if (res.message === 'User not found') {
+        if (res.message === 'User not found' || userId === undefined) {
           setError(true)
           setErrorMessage(res.message)
+          return null
         }
         if (res.message === 'Incorrect password') {
           setError(true)
           setErrorMessage(res.message)
+          return null
         }
         console.log(res)
         console.log(res.user_id)
@@ -53,8 +52,6 @@ export function Login(props) {
         authenticatedStatus = true
         console.log({ authStatus: authenticatedStatus })
         responseMessage = res.message
-        setIsAuthenticated(true)
-        // setUserId(res.user_id)
         console.log({ userId: userId }, userToken)
         console.log(history)
         console.log(location)
@@ -66,28 +63,12 @@ export function Login(props) {
       })
       .then(() => {
         if (userToken) {
-          // setIsAuthenticated(true)
           console.log(authenticatedStatus)
           console.log(responseMessage)
           history.push('/')
-          // console.log(state)
-          // return <Redirect to={state.from.pathname} />
         }
       })
   }
-
-  // {
-  //   if (res.message === 'Login successful') {
-  //     console.log(res)
-  //     setUserId(res.user_id)
-  //     localStorage.setItem('userId', `${userId}`)
-  //     console.log({ userId: userId })
-  //     window.location.assign('http://localhost:3002/api/posts')
-  //   } else {
-  //     console.log(res.message)
-  //   }
-  //   // userId = res.user_id
-  // }
 
   return (
     <div className="auth-form-container">
@@ -99,7 +80,7 @@ export function Login(props) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="email"
-          placeholder="youremail@gmail.com"
+          placeholder="youremail@example.com"
           id="email"
           name="email"
         ></input>
@@ -108,7 +89,7 @@ export function Login(props) {
           value={pass}
           onChange={(e) => setPass(e.target.value)}
           type="password"
-          placeholder="********"
+          placeholder="password"
           id="password"
           name="password"
         ></input>

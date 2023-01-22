@@ -17,6 +17,7 @@ export const Loader = styled.div`
   border: 6px solid ${colors.primary};
   border-bottom-color: transparent;
   border-radius: 22px;
+  margin-top: 7rem;
   animation: ${rotate} 1s infinite linear;
   height: 0;
   width: 0;

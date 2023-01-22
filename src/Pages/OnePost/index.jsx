@@ -93,7 +93,7 @@ function OnePost() {
         )
         const data = await response.json()
         setSinglePostData(data)
-        console.log(singlePostData)
+        // console.log(singlePostData)
         usersRead = data[0].users_read
         if (!usersRead.includes(userId)) {
           usersRead.push(userId)
@@ -116,7 +116,7 @@ function OnePost() {
       }
     }
     fetchPosts()
-  }, [])
+  }, [jwt, post_id, userId])
 
   if (!singlePostData[0]) {
     return (
@@ -149,7 +149,6 @@ function OnePost() {
             </StyledLink>
           )}
         </ButtonsWrapper>
-        {/* <img src={singlePostData[0].image_url} alt="GIF" /> */}
       </MainWrapper>
     )
   }
